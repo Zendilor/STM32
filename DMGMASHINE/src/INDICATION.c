@@ -11,11 +11,10 @@ void number (char number){
     case 0:
     GPIOB->BSRR = GPIO_BSRR_BS0
     | GPIO_BSRR_BS1
-    | GPIO_BSRR_BR3
-    | GPIO_BSRR_BR4
-    | GPIO_BSRR_BR5
-    | GPIO_BSRR_BR6
-    | GPIO_BSRR_BR7;
+    | GPIO_BSRR_BS3
+    | GPIO_BSRR_BS4
+    | GPIO_BSRR_BS5
+    | GPIO_BSRR_BS6;
     break;
     case 1:
 

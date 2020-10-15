@@ -19,7 +19,7 @@ void GPIOA_Config (void){
 }
 
 void GPIOB_Config (void){
-  GPIOB->CRL &= ~GPIO_CRL_CNF0;   // Clear PB0.
+  /*GPIOB->CRL &= ~GPIO_CRL_CNF0;   // Clear PB0.
   GPIOB->CRL &= ~GPIO_CRL_CNF1;   // Clear PB1.
   GPIOB->CRL &= ~GPIO_CRL_CNF3;   // Clear PB3.
   GPIOB->CRL &= ~GPIO_CRL_CNF4;   // Clear PB4.
@@ -53,5 +53,5 @@ void GPIOB_Config (void){
   GPIOB->BSRR = GPIO_BSRR_BR8;      // PB8 clear.
   GPIOB->BSRR = GPIO_BSRR_BR9;      // PB0 clear.
   GPIOB->BSRR = GPIO_BSRR_BS10;     // PB0 clear.
-  GPIOB->BSRR = GPIO_BSRR_BS11;     // PB0 clear.
+  GPIOB->BSRR = GPIO_BSRR_BS11;     // PB0 clear.*/
 }
