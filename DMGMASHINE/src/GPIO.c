@@ -1,15 +1,32 @@
 #include "stm32f10x.h"
 
+
+void AFIO_Config (void);
 void GPIOA_Config (void);
 void GPIOB_Config (void);
 
 void GPIO_Config(void){
+  AFIO_Config();
   GPIOA_Config();
   GPIOB_Config();
 }
 
+void AFIO_Config (void){
+  AFIO->MAPR |= AFIO_MAPR_SWJ_CFG_JTAGDISABLE;  // Disable JTAG.
+}
+
 void GPIOA_Config (void){
+  GPIOA->CRL &= ~GPIO_CRL_CNF0;   // Clear PA0.
+  GPIOA->CRL &= ~GPIO_CRL_CNF1;   // Clear PA1.
+  GPIOA->CRL &= ~GPIO_CRL_CNF3;   // Clear PA3.
+  GPIOA->ODR &= ~GPIO_ODR_ODR3;    // PA3 pull down.
+
+  GPIOA->CRL |= GPIO_CRL_CNF3_1;  // Input PA3 push pull.
+
+  GPIOA->CRL |= GPIO_CRL_CNF1_0;  // Set PA1 float mode.
+
   GPIOA->CRH &= ~GPIO_CRH_CNF9;   // Clear PA9;
+
   GPIOA->CRH &= ~GPIO_CRH_CNF10;  // Clear PA10;
 
   GPIOA->CRH |= GPIO_CRH_CNF9_1;  // Alternative function push pull.
@@ -19,7 +36,7 @@ void GPIOA_Config (void){
 }
 
 void GPIOB_Config (void){
-  /*GPIOB->CRL &= ~GPIO_CRL_CNF0;   // Clear PB0.
+  GPIOB->CRL &= ~GPIO_CRL_CNF0;   // Clear PB0.
   GPIOB->CRL &= ~GPIO_CRL_CNF1;   // Clear PB1.
   GPIOB->CRL &= ~GPIO_CRL_CNF3;   // Clear PB3.
   GPIOB->CRL &= ~GPIO_CRL_CNF4;   // Clear PB4.
@@ -53,5 +70,5 @@ void GPIOB_Config (void){
   GPIOB->BSRR = GPIO_BSRR_BR8;      // PB8 clear.
   GPIOB->BSRR = GPIO_BSRR_BR9;      // PB0 clear.
   GPIOB->BSRR = GPIO_BSRR_BS10;     // PB0 clear.
-  GPIOB->BSRR = GPIO_BSRR_BS11;     // PB0 clear.*/
+  GPIOB->BSRR = GPIO_BSRR_BS11;     // PB0 clear.
 }

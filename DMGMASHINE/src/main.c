@@ -1,20 +1,24 @@
 #include "stm32f10x.h"
+#include "ADC.h"
 #include "RCC.h"
 #include "GPIO.h"
 #include "INDICATION.h"
+#include "INTERRUPT.h"
 #include "USART.h"
+#include "TIMER.h"
+
+extern float tara;
 
 int main (void){
+
   RCC_Config();
-  //GPIO_Config();
-  //USART_Config();
-  GPIOB->CRL &= ~GPIO_CRL_CNF3;
+  GPIO_Config();
+  INTERRUPT_Config();
+  TIMER_Config();
+  USART_Config();
+  ADC_Config();
 
-  GPIOB->CRL |= GPIO_CRL_MODE3;
-
-  GPIOB->ODR |= GPIO_ODR_ODR3;
-  //INDICATION();
   while (1) {
-
+    
   }
 }
