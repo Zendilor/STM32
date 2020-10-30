@@ -18,15 +18,29 @@ void AFIO_Config (void){
 void GPIOA_Config (void){
   GPIOA->CRL &= ~GPIO_CRL_CNF0;   // Clear PA0.
   GPIOA->CRL &= ~GPIO_CRL_CNF1;   // Clear PA1.
+  GPIOA->CRL &= ~GPIO_CRL_CNF2;   // Clear PA2.
   GPIOA->CRL &= ~GPIO_CRL_CNF3;   // Clear PA3.
-  GPIOA->ODR &= ~GPIO_ODR_ODR3;    // PA3 pull down.
-
-  GPIOA->CRL |= GPIO_CRL_CNF3_1;  // Input PA3 push pull.
+  GPIOA->CRL &= ~GPIO_CRL_CNF4;   // Clear PA4.
+  GPIOA->CRL &= ~GPIO_CRL_CNF5;   // Clear PA5.
+  GPIOA->CRL &= ~GPIO_CRL_CNF6;   // Clear PA6.
 
   GPIOA->CRL |= GPIO_CRL_CNF1_0;  // Set PA1 float mode.
 
-  GPIOA->CRH &= ~GPIO_CRH_CNF9;   // Clear PA9;
+  GPIOA->CRL |= GPIO_CRL_CNF2_1;  // Input PA2 push pull.
+  GPIOA->CRL |= GPIO_CRL_CNF3_1;  // Input PA3 push pull.
+  GPIOA->CRL |= GPIO_CRL_CNF4_1;  // Input PA4 push pull.
 
+  GPIOA->CRL |= GPIO_CRL_MODE5_1;   // Set speed for PA5 2 MHz;
+  GPIOA->CRL |= GPIO_CRL_MODE6_1;   // Set speed for PA6 2 MHz;
+
+  GPIOA->ODR &= ~GPIO_ODR_ODR2;   // PA2 pull down.
+  GPIOA->ODR &= ~GPIO_ODR_ODR3;   // PA3 pull down.
+  GPIOA->ODR &= ~GPIO_ODR_ODR4;   // PA4 pull down.
+
+  GPIOA->ODR |= GPIO_ODR_ODR5;    // Set BIT PA5 to UP.
+  GPIOA->ODR |= GPIO_ODR_ODR6;    // Set BIT PA6 to UP.
+
+  GPIOA->CRH &= ~GPIO_CRH_CNF9;   // Clear PA9;
   GPIOA->CRH &= ~GPIO_CRH_CNF10;  // Clear PA10;
 
   GPIOA->CRH |= GPIO_CRH_CNF9_1;  // Alternative function push pull.

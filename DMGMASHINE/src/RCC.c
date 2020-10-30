@@ -1,6 +1,8 @@
 #include "stm32f10x.h"
 
 void RCC_Config (void){
+  RCC->APB1ENR |= RCC_APB1ENR_TIM2EN;   // Enable clock for TIMER 2.
+  RCC->APB1ENR |= RCC_APB1ENR_TIM3EN;   // Enable clock for TIMER 3.
   RCC->APB1ENR |= RCC_APB1ENR_TIM4EN;   // Enable clock for TIMER 4.
   RCC->APB2ENR |= RCC_APB2ENR_AFIOEN;   // Enable alternative function.
   RCC->APB2ENR |= RCC_APB2ENR_IOPAEN;   // Enable clock for PORTA.
