@@ -11,7 +11,8 @@ float coef_a = 0.305;
 float data_ADC = 0;
 float tara = 0;
 
-char data [] = {0x0A, 0x01, 0x00, 0x06, 0x00, 0x01, 0x1C, 0xB0};
+extern char time_err;
+char data [8];
 
 void INTERRUPT_Config (void){
   NVIC->ISER [0] |= NVIC_ISER_SETENA_8;       // Enable interrupt for EXTI2.
@@ -44,19 +45,12 @@ void ADC1_2_IRQHandler (void){
 }
 
 void USART2_IRQHandler(void){
-
+  SLAVE_RECEIVING(data);
 }
 
 void TIM2_IRQHandler (void){
   TIM2->SR &= ~TIM_SR_UIF;  // Clear interrupt flag Timer4.
-  USART1_Send(data [0]);
-  USART1_Send(data [1]);
-  USART1_Send(data [2]);
-  USART1_Send(data [3]);
-  USART1_Send(data [4]);
-  USART1_Send(data [5]);
-  USART1_Send(data [6]);
-  USART1_Send(data [7]);
+  time_err = 1;
 }
 
 void TIM3_IRQHandler (void){

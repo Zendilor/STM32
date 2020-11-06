@@ -1,1 +1,0 @@
-out/MODBUSRTU.o: src/MODBUSRTU.c

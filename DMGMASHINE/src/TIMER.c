@@ -11,11 +11,11 @@ void TIMER_Config (void){
 }
 
 void TIMER2_Config (void){
-  TIM2->DIER |= TIM_DIER_UIE;    // Timer 3 interrupt enable.
-	TIM2->CR1 |= TIM_CR1_ARPE;     // Timer 3 auto preload.
-  TIM2->PSC = 7999;              // Timer 3 prescaler.
-  TIM2->ARR = 3000;               // Timer 3 autoreload value.
-  TIM2->CR1 |= TIM_CR1_CEN;      // Timer 3 enable.
+  TIM2->DIER |= TIM_DIER_UIE;    // Timer 2 interrupt enable.
+	TIM2->CR1 |= TIM_CR1_ARPE;     // Timer 2 auto preload.
+  TIM2->PSC = 7999;              // Timer 2 prescaler.
+  TIM2->ARR = 5;                 // Timer 2 autoreload value.
+  TIM2->CR1 |= TIM_CR1_OPM;      // One pulse mode.
 }
 
 void TIMER3_Config (void){
